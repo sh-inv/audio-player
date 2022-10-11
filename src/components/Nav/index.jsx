@@ -24,5 +24,4 @@ const NavItem = styled(Link)`
   padding: 20px 0;
   color: black;
   font-size: 30px;
-  text-decoration: none;
 `;
