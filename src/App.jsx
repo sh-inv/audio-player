@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
-import Record from './pages/record';
-import Play from './pages/play';
+import Main from './pages/Main';
 
 const App = () => {
   return (
@@ -9,8 +8,7 @@ const App = () => {
       <GlobalStyle />
       <Router>
         <Routes>
-          <Route path='/' element={<Record />} />
-          <Route path='/play' element={<Play />} />
+          <Route path='/' element={<Main />} />
         </Routes>
       </Router>
     </>
