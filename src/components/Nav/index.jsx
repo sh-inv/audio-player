@@ -17,6 +17,7 @@ const NavWrapper = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
+  margin-bottom: 5px;
   background-color: green;
 `;
 
