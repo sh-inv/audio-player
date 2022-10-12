@@ -7,26 +7,13 @@ const AudioList = ({ trackList, setTrackNumber }) => {
 
   return (
     <div>
-      AudioList
-<<<<<<< HEAD
-      {/* <button
-=======
-      <button
->>>>>>> develop/merge
-        id={1}
-        onClick={e => {
-          setTrackNumber(e.target.id);
-        }}
-      >
-        버튼
-<<<<<<< HEAD
-      </button> */}
-      {/* {trackList.map(item => (
-        <li>{item}</li>
-      ))} */}
-=======
-      </button>
->>>>>>> develop/merge
+      {trackList.map(item => (
+        <ul>
+          <li value={id} key={id}>
+            {item}
+          </li>
+        </ul>
+      ))}
     </div>
   );
 };
