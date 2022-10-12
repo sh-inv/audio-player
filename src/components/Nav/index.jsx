@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { mainColor } from '../../Theme';
 
 const Nav = () => {
   return (
@@ -17,12 +18,11 @@ const NavWrapper = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  margin-bottom: 5px;
-  background-color: green;
+  background-color: ${mainColor};
 `;
 
 const NavItem = styled(Link)`
   padding: 20px 0;
-  color: black;
+  color: white;
   font-size: 30px;
 `;

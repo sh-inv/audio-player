@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import AudioList from '../../components/AudioList';
-import AudioWaveForm from '../../components/AudioWaveForm';
-import AudioPlayBar from '../../components/AudioPlayBar';
-import AudioDownLoad from '../../components/AudioDownLoad';
+import AudioPlay from '../../components/AudioPlay';
 
 const PlayScreen = () => {
   return (
@@ -11,9 +9,7 @@ const PlayScreen = () => {
         <AudioList />
       </div>
       <div className='audio-detail-content'>
-        <AudioWaveForm />
-        <AudioPlayBar />
-        <AudioDownLoad />
+        <AudioPlay />
       </div>
     </PlayScreenWrapper>
   );
@@ -28,7 +24,7 @@ const PlayScreenWrapper = styled.div`
   .audio-detail-content {
     display: flex;
     justify-content: center;
-    margin: 5px;
+    margin: 5px 0px;
     padding: 5px;
   }
 

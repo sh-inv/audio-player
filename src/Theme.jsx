@@ -1,3 +1,3 @@
-const mainColor = '#007a99';
+const mainColor = '#5092CD';
 
 export { mainColor };

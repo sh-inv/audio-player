@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import AudioList from '../../components/AudioList';
-import AudioWaveForm from '../../components/AudioWaveForm';
-import AudioPlayBar from '../../components/AudioPlayBar';
-import AudioDownLoad from '../../components/AudioDownLoad';
+import AudioPlay from '../../components/AudioPlay';
 import AudioRecord from '../../components/AudioRecord';
 
 const RecordScreen = () => {
@@ -12,13 +10,8 @@ const RecordScreen = () => {
         <AudioList />
       </div>
       <div className='audio-detail-content'>
-        <AudioWaveForm />
-        <AudioPlayBar />
-        <AudioDownLoad />
-        <div className='record-content'>
-          <AudioPlayBar />
-          <AudioRecord />
-        </div>
+        <AudioPlay />
+        <AudioRecord />
       </div>
     </RecordScreenWrapper>
   );
@@ -33,7 +26,7 @@ const RecordScreenWrapper = styled.div`
   .audio-detail-content {
     display: flex;
     justify-content: center;
-    margin: 5px;
+    margin: 5px 0px;
     padding: 5px;
   }
 
