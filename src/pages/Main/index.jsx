@@ -78,7 +78,7 @@ const PlayScreenWrapper = styled.div`
 
   .audio-list-content {
     width: 35%;
-    background-color: beige;
+    background-color: white;
   }
 
   .audio-detail-content {

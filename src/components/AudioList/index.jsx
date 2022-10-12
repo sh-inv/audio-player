@@ -4,10 +4,10 @@ const AudioList = ({ trackList, setTrackNumber }) => {
   return (
     <StyledContainer>
       <h1>AUDIO LIST</h1>
-      {trackList.map(item => (
-        <ul>
+      <ul>
+        {trackList.map(item => (
           <li
-            key={item.id}
+            key={item.title}
             id={item.id}
             onClick={e => {
               setTrackNumber(e.target.id);
@@ -16,8 +16,8 @@ const AudioList = ({ trackList, setTrackNumber }) => {
             <h2>Title :</h2>
             {item.title}
           </li>
-        </ul>
-      ))}
+        ))}
+      </ul>
     </StyledContainer>
   );
 };
