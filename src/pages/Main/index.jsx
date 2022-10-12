@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import AudioList from '../../components/AudioList';
 import AudioPlay from '../../components/AudioPlay';
-import AudioRecord from '../../components/AudioRecord';
+import AudioRecord from '../../components/AudioRecord/index.jsx';
 import PlayList from '../../../public/Data/Audio/audio.json';
 
 const Main = () => {
