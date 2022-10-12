@@ -5,7 +5,7 @@ import { mainColor } from '../../Theme';
 const Nav = () => {
   return (
     <NavWrapper>
-      <NavItem to='/play'>음성 목록</NavItem>
+      <NavItem to='/'>음성 목록</NavItem>
       <NavItem to='/record'>녹음 목록</NavItem>
     </NavWrapper>
   );
