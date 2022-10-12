@@ -1,34 +1,46 @@
+import styled from 'styled-components';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import styled from 'styled-components';
+import axios from 'axios';
 import AudioList from '../../components/AudioList';
 import AudioPlay from '../../components/AudioPlay';
 import AudioRecord from '../../components/AudioRecord';
-import PlayList from '../../../public/Data/Audio/audio.json';
-import axios from 'axios';
 
 const Main = () => {
-  const [err, setErr] = useState(false);
-  const [isRecord, setIsRecord] = useState(false);
+  const location = useLocation();
+  const [trackType, setTrackType] = useState('');
+  const [trackList, setTrackList] = useState([]);
   const [trackNumber, setTrackNumber] = useState(0);
   const [track, setTrack] = useState('');
-  const [trackList, setTrackList] = useState([]);
-
-  const location = useLocation();
+  const [isRecord, setIsRecord] = useState(false);
+  const [err, setErr] = useState(false);
 
   useEffect(() => {
     const navTitle = location.pathname;
     if (navTitle === '/') {
-      setTrackList('play');
+      setTrackType('playList');
       setIsRecord(false);
     } else if (navTitle === '/record') {
-      setTrackList('record');
+      setTrackType('recordList');
       setIsRecord(true);
     } else {
       setErr(true);
     }
   }, [location]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const {
+          data: { lists },
+        } = await axios.get(`../../../public/Data/Audio/${trackType}.json`);
+        setTrackList(lists);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   useEffect(() => {
     trackList.map(trackInfo => {
@@ -37,19 +49,6 @@ const Main = () => {
       }
     });
   }, [trackNumber]);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const {
-          data: { lists },
-        } = await axios.get('../../../public/Data/Audio/audio.json');
-        setTrackList(lists);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
 
   return err ? (
     <div>에러</div>
