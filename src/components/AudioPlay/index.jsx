@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Download from './Download';
-import PlayBar from './PlayBar';
 import WaveForm from './WaveForm';
+import PlayBar from './PlayBar';
+import Download from './Download';
 
 const AudioPlay = ({ track, setTrackNumber }) => {
   return (
