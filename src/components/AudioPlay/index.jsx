@@ -6,7 +6,7 @@ import Download from './Download';
 const AudioPlay = ({ track, setTrackNumber }) => {
   return (
     <AudioPlayWrapper>
-      <WaveForm />
+      <WaveForm track={track} />
       <PlayBar track={track} setTrackNumber={setTrackNumber} />
       <Download track={track} />
     </AudioPlayWrapper>
