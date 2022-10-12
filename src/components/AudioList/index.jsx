@@ -8,14 +8,17 @@ const AudioList = ({ trackList, setTrackNumber }) => {
   return (
     <div>
       AudioList
-      <button
+      {/* <button
         id={1}
         onClick={e => {
           setTrackNumber(e.target.id);
         }}
       >
         버튼
-      </button>
+      </button> */}
+      {/* {trackList.map(item => (
+        <li>{item}</li>
+      ))} */}
     </div>
   );
 };
