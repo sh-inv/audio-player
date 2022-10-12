@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { getAudioList } from './Api';
-import { useState, useEffect } from 'react';
 
 const AudioList = ({ trackList, setTrackNumber }) => {
   return (
@@ -38,7 +36,7 @@ const StyledContainer = styled.div`
     width: 100%;
     border: 1px solid gray;
     font-size: 1em;
-    padding: 10px;
+    padding: 7px;
     margin-bottom: 10px;
     :hover {
       border: 2px solid #5092cd;
