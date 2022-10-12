@@ -9,7 +9,6 @@ import AudioRecord from '../../components/AudioRecord';
 
 const Main = () => {
   const location = useLocation();
-  const [trackType, setTrackType] = useState('');
   const [trackList, setTrackList] = useState([]);
   const [trackNumber, setTrackNumber] = useState(0);
   const [track, setTrack] = useState('');
@@ -18,29 +17,30 @@ const Main = () => {
 
   useEffect(() => {
     const navTitle = location.pathname;
+    let url = '../../../public/Data/Audio/';
     if (navTitle === '/') {
-      setTrackType('playList');
+      fetchData(url + 'playList.json');
       setIsRecord(false);
     } else if (navTitle === '/record') {
-      setTrackType('recordList');
+      fetchData(url + 'recordList.json');
       setIsRecord(true);
     } else {
       setErr(true);
     }
   }, [location]);
 
-  useEffect(() => {
+  const fetchData = url => {
     (async () => {
       try {
         const {
           data: { lists },
-        } = await axios.get(`../../../public/Data/Audio/${trackType}.json`);
+        } = await axios.get(url);
         setTrackList(lists);
       } catch (error) {
         console.log(error);
       }
     })();
-  }, []);
+  };
 
   useEffect(() => {
     trackList.map(trackInfo => {
@@ -78,7 +78,7 @@ const PlayScreenWrapper = styled.div`
 
   .audio-list-content {
     width: 35%;
-    background-color: #d6d641;
+    background-color: beige;
   }
 
   .audio-detail-content {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Download = () => {
+const Download = ({ track }) => {
   return <div>Download</div>;
 };
 

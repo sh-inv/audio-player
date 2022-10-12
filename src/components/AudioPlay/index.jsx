@@ -8,7 +8,7 @@ const AudioPlay = ({ track, setTrackNumber }) => {
     <AudioPlayWrapper>
       <WaveForm />
       <PlayBar track={track} setTrackNumber={setTrackNumber} />
-      <Download />
+      <Download track={track} />
     </AudioPlayWrapper>
   );
 };
