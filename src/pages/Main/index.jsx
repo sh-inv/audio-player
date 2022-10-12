@@ -5,7 +5,8 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import AudioList from '../../components/AudioList';
 import AudioPlay from '../../components/AudioPlay';
-import AudioRecord from '../../components/AudioRecord';
+import AudioRecord from '../../components/AudioRecord/index.jsx';
+import axios from 'axios';
 
 const Main = () => {
   const location = useLocation();
