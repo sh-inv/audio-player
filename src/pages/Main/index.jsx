@@ -1,11 +1,11 @@
+import styled from 'styled-components';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import styled from 'styled-components';
+import axios from 'axios';
 import AudioList from '../../components/AudioList';
 import AudioPlay from '../../components/AudioPlay';
-import AudioRecord from '../../components/AudioRecord';
-import axios from 'axios';
+import AudioRecord from '../../components/AudioRecord/index.jsx';
 
 const Main = () => {
   const location = useLocation();
@@ -78,7 +78,7 @@ const PlayScreenWrapper = styled.div`
 
   .audio-list-content {
     width: 35%;
-    background-color: #d6d641;
+    background-color: white;
   }
 
   .audio-detail-content {

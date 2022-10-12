@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
