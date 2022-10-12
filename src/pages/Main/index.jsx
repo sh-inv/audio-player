@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import AudioList from '../../components/AudioList';
@@ -17,7 +16,7 @@ const Main = () => {
 
   useEffect(() => {
     const navTitle = location.pathname;
-    let url = '../../../public/Data/Audio/';
+    let url = '/Data/Audio/';
     if (navTitle === '/') {
       fetchData(url + 'playList.json');
       setIsRecord(false);

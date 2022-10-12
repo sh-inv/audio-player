@@ -28,16 +28,16 @@ const StyledContainer = styled.div`
   margin: 10px;
   text-align: center;
   h1 {
-    font-size: 1.6em;
     margin-bottom: 10px;
+    font-size: 1.6em;
   }
   li {
     display: flex;
     width: 100%;
-    border: 1px solid gray;
-    font-size: 1em;
     padding: 7px;
     margin-bottom: 10px;
+    border: 1px solid gray;
+    font-size: 1em;
     :hover {
       border: 2px solid #5092cd;
     }

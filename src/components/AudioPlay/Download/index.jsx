@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 
 const Download = ({ track }) => {
   const [trackUrl, setTrackUrl] = useState('');
@@ -10,7 +10,6 @@ const Download = ({ track }) => {
       const fileExtension = track.src.split('.').pop();
       const trackUrl = track.src.replace(fileExtension, audioType);
       setTrackUrl(trackUrl);
-      console.log(trackUrl);
     }
   }, [track, audioType]);
 

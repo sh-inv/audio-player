@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { useRef } from "react";
-import styled from "styled-components";
+import styled from 'styled-components';
+import React, { useState, useRef } from 'react';
 
 const AudioRecord = () => {
   const [stream, setStream] = useState();
@@ -14,8 +13,7 @@ const AudioRecord = () => {
   const recordTimeInput = useRef();
 
   const onRecAudio = () => {
-
-    setDisabled(true)
+    setDisabled(true);
 
     // 음원정보를 담은 노드를 생성하거나 음원을 실행또는 디코딩 시키는 일을 한다
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -31,7 +29,7 @@ const AudioRecord = () => {
       analyser.connect(audioCtx.destination);
     }
     // 마이크 사용 권한 획득
-    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
       const mediaRecorder = new MediaRecorder(stream);
       mediaRecorder.start();
       setStream(stream);
@@ -79,22 +77,22 @@ const AudioRecord = () => {
     // 메서드가 호출 된 노드 연결 해제
     analyser.disconnect();
     source.disconnect();
-    
+
     if (audioUrl) {
       URL.createObjectURL(audioUrl); // 출력된 링크에서 녹음된 오디오 확인 가능
     }
-    
+
     // File 생성자를 사용해 파일로 변환
-    const sound = new File([audioUrl], "soundBlob", {
+    const sound = new File([audioUrl], 'soundBlob', {
       lastModified: new Date().getTime(),
-      type: "audio",
+      type: 'audio',
     });
-  	
+
     setDisabled(false);
     console.log(sound); // File 정보 출력
   };
 
-  const play = () => { 
+  const play = () => {
     const audio = new Audio(URL.createObjectURL(audioUrl));
     audio.loop = false;
     audio.volume = 1;
@@ -103,21 +101,22 @@ const AudioRecord = () => {
 
   const recordTime = () => {
     setMaxRecordTime(recordTimeInput.current.value * 60);
-  }
+  };
   console.log(maxRecordTime);
 
   return (
     <Record>
       {!isRecord && <span>녹음중...</span>}
       <button onClick={isRecord ? onRecAudio : offRecAudio}>녹음</button>
-      <span>최대 녹음가능 시간 <input type="number" defaultValue={maxRecordTime / 60} min='1' ref={recordTimeInput} onClick={recordTime} /> 분</span>
-      
+      <span>
+        최대 녹음가능 시간 <input type='number' defaultValue={maxRecordTime / 60} min='1' ref={recordTimeInput} onClick={recordTime} /> 분
+      </span>
     </Record>
   );
 };
 
 const Record = styled.div`
   width: 100%;
-`
+`;
 
 export default AudioRecord;
