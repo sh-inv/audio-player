@@ -10,41 +10,38 @@ import PlayList from '../../../public/Data/Audio/audio.json';
 const Main = () => {
   const [err, setErr] = useState(false);
   const [isRecord, setIsRecord] = useState(false);
-  const [audioFile, setAudioFile] = useState('play');
-  const [track, setTrack] = useState(0);
+  const [trackNumber, setTrackNumber] = useState(0);
+  const [track, setTrack] = useState('');
+  const [trackList, setTrackList] = useState([]);
 
   const location = useLocation();
-
-  const handleClickNext = () => {
-    setTrack(track => (track < PlayList.lists.length - 1 ? track + 1 : 0));
-  };
-
-  const hadleClickPre = () => {
-    setTrack(track => (track > PlayList.lists.length + 1 ? track - 1 : 0));
-  };
 
   useEffect(() => {
     const navTitle = location.pathname;
     if (navTitle === '/') {
-      setAudioFile('play');
+      setTrackList('play');
       setIsRecord(false);
     } else if (navTitle === '/record') {
-      setAudioFile('record');
+      setTrackList('record');
       setIsRecord(true);
     } else {
       setErr(true);
     }
   }, [location]);
 
+  useEffect(() => {
+    setTrack(trackNumber);
+  }, [trackNumber]);
+
   return err ? (
     <div>에러</div>
   ) : (
     <PlayScreenWrapper>
       <div className='audio-list-content'>
-        <AudioList audioFile={audioFile} />
+        <AudioList trackList={trackList} setTrackNumber={setTrackNumber} />
       </div>
       <div className='audio-detail-content'>
-        <AudioPlay audioFile={audioFile} track={track} setTrack={setTrack} handleClickNext={handleClickNext} hadleClickPre={hadleClickPre} />
+        <AudioPlay track={track} setTrackNumber={setTrackNumber} />
         {isRecord && <AudioRecord />}
       </div>
     </PlayScreenWrapper>
