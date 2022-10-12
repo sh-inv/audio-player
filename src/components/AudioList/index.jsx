@@ -2,25 +2,20 @@ import styled from 'styled-components';
 import { getAudioList } from './Api';
 import { useState, useEffect } from 'react';
 
-const AudioList = ({ track, setTrack }) => {
-  const [list, setList] = useState({});
-
-  useEffect(() => {
-    getAudioList().then(json => setList(json));
-  }, []);
-
-  // console.log(list.lists[track].title);
+const AudioList = ({ trackList, setTrackNumber }) => {
+  // useEffect();
 
   return (
     <div>
       AudioList
-      {/* <div>
-        {list.title.map(song => (
-          <li value={song} key={id}>
-            {song}
-          </li>
-        ))}
-      </div> */}
+      <button
+        id={1}
+        onClick={e => {
+          setTrackNumber(e.target.id);
+        }}
+      >
+        버튼
+      </button>
     </div>
   );
 };

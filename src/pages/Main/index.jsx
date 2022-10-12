@@ -6,6 +6,7 @@ import AudioList from '../../components/AudioList';
 import AudioPlay from '../../components/AudioPlay';
 import AudioRecord from '../../components/AudioRecord';
 import PlayList from '../../../public/Data/Audio/audio.json';
+import axios from 'axios';
 
 const Main = () => {
   const [err, setErr] = useState(false);
@@ -30,8 +31,25 @@ const Main = () => {
   }, [location]);
 
   useEffect(() => {
-    setTrack(trackNumber);
+    trackList.map(trackInfo => {
+      if (trackInfo.id === Number(trackNumber)) {
+        setTrack(trackInfo);
+      }
+    });
   }, [trackNumber]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const {
+          data: { lists },
+        } = await axios.get('../../../public/Data/Audio/audio.json');
+        setTrackList(lists);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   return err ? (
     <div>에러</div>

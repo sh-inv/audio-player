@@ -2,19 +2,18 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import PlayList from '../../../../public/Data/Audio/audio.json';
 
 const PlayBar = ({ track, setTrackNumber }) => {
   const handleClickNext = () => {
-    setTrackNumber(prev => prev + 1);
+    setTrackNumber(prev => Number(prev) + 1);
   };
 
   const hadleClickPre = () => {
-    setTrackNumber(prev => prev - 1);
+    setTrackNumber(prev => Number(prev) - 1);
   };
   return (
     <StyledContainer>
-      <AudioPlayer header={PlayList.lists[track].title} autoPlay={false} src={PlayList.lists[track].src} onPlay={e => console.log('onPlay')} showSkipControls onClickPrevious={hadleClickPre} onClickNext={handleClickNext} />
+      <AudioPlayer header={track.title} autoPlay={false} src={track.src} onPlay={e => console.log('onPlay')} showSkipControls onClickPrevious={hadleClickPre} onClickNext={handleClickNext} />
     </StyledContainer>
     // other props here
   );
