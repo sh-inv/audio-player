@@ -5,12 +5,23 @@ import styled from 'styled-components';
 import AudioList from '../../components/AudioList';
 import AudioPlay from '../../components/AudioPlay';
 import AudioRecord from '../../components/AudioRecord';
+import PlayList from '../../../public/Data/Audio/audio.json';
 
 const Main = () => {
   const [err, setErr] = useState(false);
   const [isRecord, setIsRecord] = useState(false);
   const [audioFile, setAudioFile] = useState('play');
+  const [track, setTrack] = useState(0);
+
   const location = useLocation();
+
+  const handleClickNext = () => {
+    setTrack(track => (track < PlayList.lists.length - 1 ? track + 1 : 0));
+  };
+
+  const hadleClickPre = () => {
+    setTrack(track => (track > PlayList.lists.length + 1 ? track - 1 : 0));
+  };
 
   useEffect(() => {
     const navTitle = location.pathname;
@@ -33,7 +44,7 @@ const Main = () => {
         <AudioList audioFile={audioFile} />
       </div>
       <div className='audio-detail-content'>
-        <AudioPlay audioFile={audioFile} />
+        <AudioPlay audioFile={audioFile} track={track} setTrack={setTrack} handleClickNext={handleClickNext} hadleClickPre={hadleClickPre} />
         {isRecord && <AudioRecord />}
       </div>
     </PlayScreenWrapper>
