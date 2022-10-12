@@ -1,8 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Nav from './components/Nav';
 import GlobalStyle from './GlobalStyle';
-import PlayScreen from './pages/PlayScreen';
-import RecordScreen from './pages/RecordScreen';
+import Main from './pages/Main';
 
 const App = () => {
   return (
@@ -11,8 +10,7 @@ const App = () => {
       <Router>
         <Nav />
         <Routes>
-          <Route path='/play' element={<PlayScreen />} />
-          <Route path='/record' element={<RecordScreen />} />
+          <Route path='/*' element={<Main />} />
         </Routes>
       </Router>
     </>
