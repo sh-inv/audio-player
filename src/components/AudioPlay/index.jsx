@@ -3,11 +3,11 @@ import Download from './Download';
 import PlayBar from './PlayBar';
 import WaveForm from './WaveForm';
 
-const AudioPlay = () => {
+const AudioPlay = ({ track, setTrack, handleClickNext, hadleClickPre }) => {
   return (
     <AudioPlayWrapper>
       <WaveForm />
-      <PlayBar />
+      <PlayBar track={track} setTrack={setTrack} handleClickNext={handleClickNext} hadleClickPre={hadleClickPre} />
       <Download />
     </AudioPlayWrapper>
   );
