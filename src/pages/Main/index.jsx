@@ -1,50 +1,70 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import AudioList from '../../components/AudioList';
 import AudioPlay from '../../components/AudioPlay';
-import AudioRecord from '../../components/AudioRecord';
-import PlayList from '../../../public/Data/Audio/audio.json';
+import AudioRecord from '../../components/AudioRecord/index.jsx';
+// axios.defaults.withCredentials = true;
 
 const Main = () => {
-  const [err, setErr] = useState(false);
-  const [isRecord, setIsRecord] = useState(false);
-  const [audioFile, setAudioFile] = useState('play');
-  const [track, setTrack] = useState(0);
-
   const location = useLocation();
-
-  const handleClickNext = () => {
-    setTrack(track => (track < PlayList.lists.length - 1 ? track + 1 : 0));
-  };
-
-  const hadleClickPre = () => {
-    setTrack(track => (track > PlayList.lists.length + 1 ? track - 1 : 0));
-  };
+  const [trackList, setTrackList] = useState([]);
+  const [trackNumber, setTrackNumber] = useState(0);
+  const [track, setTrack] = useState('');
+  const [isRecord, setIsRecord] = useState(false);
+  const [err, setErr] = useState(false);
 
   useEffect(() => {
     const navTitle = location.pathname;
+    let url = '/Data/Audio/';
     if (navTitle === '/') {
-      setAudioFile('play');
+      fetchData(url + 'playList.json');
       setIsRecord(false);
     } else if (navTitle === '/record') {
-      setAudioFile('record');
+      fetchData(url + 'audioRecord.json');
       setIsRecord(true);
     } else {
       setErr(true);
     }
   }, [location]);
 
+  const fetchData = url => {
+    (async () => {
+      try {
+        const {
+          data: { lists },
+        } = await axios({
+          url,
+          method: 'GET',
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+        });
+        setTrackList(lists);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
+
+  useEffect(() => {
+    trackList.map(trackInfo => {
+      if (trackInfo.id === Number(trackNumber)) {
+        setTrack(trackInfo);
+      }
+    });
+  }, [trackNumber]);
+
   return err ? (
     <div>에러</div>
   ) : (
     <PlayScreenWrapper>
       <div className='audio-list-content'>
-        <AudioList audioFile={audioFile} />
+        <AudioList trackList={trackList} setTrackNumber={setTrackNumber} />
       </div>
       <div className='audio-detail-content'>
-        <AudioPlay audioFile={audioFile} track={track} setTrack={setTrack} handleClickNext={handleClickNext} hadleClickPre={hadleClickPre} />
+        <AudioPlay track={track} setTrackNumber={setTrackNumber} />
         {isRecord && <AudioRecord />}
       </div>
     </PlayScreenWrapper>
@@ -53,6 +73,7 @@ const Main = () => {
 
 const PlayScreenWrapper = styled.div`
   display: flex;
+  height: 100%;
 
   .audio-list-content,
   .audio-detail-content {
@@ -60,11 +81,12 @@ const PlayScreenWrapper = styled.div`
     justify-content: center;
     margin: 5px 0px;
     padding: 5px;
+    height: 100%;
   }
 
   .audio-list-content {
     width: 35%;
-    background-color: #d6d641;
+    background: linear-gradient(to right, #f0ff00, #58cffb);
   }
 
   .audio-detail-content {
