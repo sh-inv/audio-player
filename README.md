@@ -1,4 +1,5 @@
 # **프로젝트 소개 - 오디오 재생 프로그램 만들기**
+https://im4.ezgif.com/tmp/ezgif-4-91f2653f13.gif
 ## 배포 주소
 ### 📒 https://whimsical-snickerdoodle-2f1ebb.netlify.app/
 
