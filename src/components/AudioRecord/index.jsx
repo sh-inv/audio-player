@@ -116,13 +116,13 @@ const AudioRecord = () => {
   };
 
   const recordURL = () => {
-    // if(audioData){
-    //   setNewRecord(URL.createObjectURL(audioData));
-    // } else {
-    //   alert('녹음파일이 없습니다!');
-    // }
+    if(audioData){
+      setNewRecord(URL.createObjectURL(audioData));
+    } else {
+      alert('녹음파일이 없습니다!');
+    }
   };
-  console.log('adsf', newRecord);
+  console.log('adsf', audioData);
 
   return (
     <Record>
@@ -141,9 +141,9 @@ const AudioRecord = () => {
           ))}
         </select>
       </div>
-      <a className='click-to-download' href={newRecord} download onClick={recordURL}>
+      {audioData && <a className='click-to-download' href={newRecord} download onClick={recordURL}>
         음성녹음 다운로드
-      </a>
+      </a>}
     </Record>
   );
 };
