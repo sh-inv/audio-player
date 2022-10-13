@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { RiFileMusicLine } from 'react-icons/ri';
 
 const AudioList = ({ trackList, setTrackNumber }) => {
   return (
     <StyledContainer>
-      <h1>AUDIO LIST</h1>
+      <h1>- AUDIO LIST -</h1>
       <ul>
         {trackList.map(item => (
           <li
@@ -13,7 +14,9 @@ const AudioList = ({ trackList, setTrackNumber }) => {
               setTrackNumber(e.target.id);
             }}
           >
-            <h2>Title :</h2>
+            <h2>
+              <RiFileMusicLine />
+            </h2>
             {item.title}
           </li>
         ))}
@@ -28,8 +31,16 @@ const StyledContainer = styled.div`
   margin: 10px;
   text-align: center;
   h1 {
+    background: -webkit-linear-gradient(left, #f0ff00, #58cffb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     margin-bottom: 10px;
-    font-size: 1.6em;
+    font-size: 1.9em;
+    font-weight: bold;
+  }
+  ul {
+    width: 200px;
   }
   li {
     display: flex;
@@ -38,8 +49,10 @@ const StyledContainer = styled.div`
     margin-bottom: 10px;
     border: 1px solid gray;
     font-size: 1em;
+    border: none;
     :hover {
-      border: 2px solid #5092cd;
+      background: linear-gradient(to right, #f0ff00, #58cffb);
+      cursor: pointer;
     }
   }
   h2 {

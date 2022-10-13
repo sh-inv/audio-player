@@ -12,7 +12,7 @@ const PlayBar = ({ track, setTrackNumber }) => {
   };
   return (
     <StyledContainer>
-      <AudioPlayer header={track.title} autoPlay={false} src={track.src} onPlay={e => console.log('onPlay')} showSkipControls onClickPrevious={hadleClickPre} onClickNext={handleClickNext} />
+      <AudioPlayer header={track.title} autoPlay={false} src={track.src} showSkipControls onClickPrevious={hadleClickPre} onClickNext={handleClickNext} />
     </StyledContainer>
     // other props here
   );
@@ -27,23 +27,35 @@ const StyledContainer = styled.div`
   .rhap_container {
     display: flex;
     width: 100%;
-    background-color: white;
+    height: 15vh;
+    background: linear-gradient(to right, #f0ff00, #58cffb);
+    border: none;
+    box-shadow: none;
+
+    svg {
+      color: white;
+    }
 
     .rhap_header {
-      color: #5092cd;
+      color: white;
       font-size: 28px;
       text-align: center;
-      font-family: 'Dancing Script', cursive;
+      font-weight: bold;
     }
     .rhap_progress-filled {
-      background-color: #5092cd;
+      background-color: white;
     }
     .rhap_main-controls-button {
-      color: #5092cd;
+      color: white;
     }
-    .rhap_container {
-      height: 20vh;
-      border: 1px solid pink;
+
+    .rhap_progress-indicator {
+      background: linear-gradient(to right, #f0ff00, #58cffb);
+      box-shadow: none;
+    }
+    .rhap_volume-indicator {
+      background: linear-gradient(to right, #f0ff00, #58cffb);
+      box-shadow: none;
     }
   }
   .rhap_progress-indicator {
