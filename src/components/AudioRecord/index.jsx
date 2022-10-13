@@ -105,38 +105,45 @@ const AudioRecord = () => {
     //   const audioUrl = URL.createObjectURL(audioData); // 출력된 링크에서 녹음된 오디오 확인 가능
     //   setNewRecord(audioUrl);
     // }
-    
+
     // File 생성자를 사용해 파일로 변환
     const sound = new File([audioData], 'voiceRecord', {
       lastModified: new Date().getTime(),
       type: 'audio',
     });
+    setNewRecord(sound);
     console.log(sound); // File 정보 출력
   };
-  
+
   const recordURL = () => {
-      const audio = new Audio(URL.createObjectURL(audioData));
-      setNewRecord(URL.createObjectURL(audioData));
-      console.log(audio);
-    };
-    console.log('adsf',newRecord);
-    
-    return (
+    // if(audioData){
+    //   setNewRecord(URL.createObjectURL(audioData));
+    // } else {
+    //   alert('녹음파일이 없습니다!');
+    // }
+  };
+  console.log('adsf', newRecord);
+
+  return (
     <Record>
       <img
         className='record-btn'
-        src={!isRecord ? 'https://cdn-icons-png.flaticon.com/512/3138/3138411.png' : 'https://user-images.githubusercontent.com/104422865/195350700-b8386025-86a2-4d99-aed8-07b3242ff760.png'}
+        src={!isRecord ? 'https://user-images.githubusercontent.com/104422865/195544014-8286f4e9-4826-4b2c-9983-7971e239d642.png' : 'https://cdn-icons-png.flaticon.com/512/3138/3138411.png'}
         onClick={isRecord ? onRecAudio : offRecAudio}
       />
-      <select onChange={recordTime}>
-        {selectObject.map(object => (
-          <option key={object.name} value={object.value}>
-            {object.name}
-          </option>
-        ))}
-      </select>
-      <button onClick={recordURL}>녹음저장</button>
-      <a href={newRecord} download>Click to download</a>
+      <div>
+        녹음 가능 시간:
+        <select onChange={recordTime}>
+          {selectObject.map(object => (
+            <option key={object.name} value={object.value}>
+              {object.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <a className='click-to-download' href={newRecord} download onClick={recordURL}>
+        음성녹음 다운로드
+      </a>
     </Record>
   );
 };
@@ -155,7 +162,17 @@ const Record = styled.div`
   .record-btn {
     width: 150px;
     height: 150px;
+    margin: 20px 0;
     cursor: pointer;
+  }
+
+  .click-to-download {
+    margin: 20px 0;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 10px;
+    color: #000000;
+    text-decoration: none;
   }
 `;
 
