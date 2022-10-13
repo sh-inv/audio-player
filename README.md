@@ -12,6 +12,32 @@
 
 <br>
 
+## 프로젝트 설치 및 실행 방법
+### 설치 방법
+1. Node.js를 설치해주세요.
+```
+https://nodejs.org/
+```
+
+2. 레포지토리를 클론해주세요. 
+```
+git clone https://github.com/sh-inv/audio_player
+```
+
+3. dependencies를 설치해주세요.
+```
+npm install
+```
+
+### 실행방법
+1. 명령어를 통해 server를 실행해주세요. (build vite 사용)
+```
+npm run dev
+```
+
+2. 브라우저에서 하기의 배포주소로 접속해주세요.
+📒 배포 주소(https://whimsical-snickerdoodle-2f1ebb.netlify.app/)
+
 ## \*\* 기능 소개
 
 - 오디오를 녹음하고, 재생하는 등 오디오 파일을 관리하는 프로그램입니다.
@@ -35,23 +61,23 @@
 
 ### 녹음 플레이어
 ![녹음플레이어1](https://user-images.githubusercontent.com/108816777/195650493-163027ef-6cf2-4425-bd5a-76d0d254ee95.gif)
-![녹음플레이어2](https://user-images.githubusercontent.com/108816777/195650616-5c1cdf13-0e09-4b98-a41a-c1952f197d9c.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/108816777/195652100-78d11533-1648-40e8-b392-e36dea7cfa14.gif)
 <br>
 
 ## \*\*역할 분담
 
 ### [이고운] - 오디오 플레이 리스트 및 사운드 바 구현
 
-- 구현한 기능 : 라이브러리 사용하여 사운드 바 구현 및 오디오 플레이 리스트 생성
-
+- 구현한 기능 : react-h5-audio-player 라이브러리 사용하여 사운드 바 구현 및 오디오 플레이 리스트 생성
 
 ### [구현]
+- 구현한 기능 : wavesurfer.js 사용하여 파형 구형 및 오디오 파일 다운로드 기능 구현
 
 ### [유상호]
+- 구현한 기능 : 데스크탑 녹음 허용 권한 통해 녹음기능 구현 및 녹음 파일 다운로드 기능 구현
 
 <br>
 
-​
 
 ## **적용 기술**
 
@@ -59,7 +85,6 @@
 
 <br>
 
-​
 
 ## **팀 노션**
 
