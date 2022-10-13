@@ -1,6 +1,6 @@
 # **프로젝트 소개 - 오디오 재생 프로그램 만들기**
 
-![](https://velog.velcdn.com/images/qierapu1im/post/47d59439-5dd2-42f1-bd67-e60f28b072c1/image.gif)
+![](https://velog.velcdn.com/images/qierapu1im/post/1e548a06-f04d-4504-a8e3-f6fa93e7af56/image.gif)
 
 ## 배포 주소
 ### 📒 https://whimsical-snickerdoodle-2f1ebb.netlify.app/
