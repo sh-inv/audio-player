@@ -90,9 +90,9 @@ const AudioRecord = () => {
     };
 
     // 모든 트랙에서 stop()을 호출해 오디오 스트림을 정지
-    // stream.getAudioTracks().forEach(function (track) {
-    //   track.stop();
-    // });
+    stream.getAudioTracks().forEach(function (track) {
+      track.stop();
+    });
 
     // 미디어 캡처 중지
     media.stop();
