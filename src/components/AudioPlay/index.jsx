@@ -97,7 +97,7 @@ const PlayBaraWrapper = styled.div`
   .rhap_container {
     display: flex;
     width: 100%;
-    height: 18vh;
+    height: 22vh;
     background: linear-gradient(to right, #f0ff00, #58cffb);
     border: none;
     box-shadow: none;
