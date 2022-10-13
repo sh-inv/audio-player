@@ -20,7 +20,7 @@ const AudioPlay = ({ track, setTrackNumber }) => {
         if (wavesurfer.current) {
           playBarRef.current.audio.current.play();
           wavesurfer.current.play();
-          wavesurfer.current.setVolume(0.5);
+          wavesurfer.current.setVolume(0);
         }
       });
       return () => wavesurfer.current.destroy();
@@ -40,6 +40,11 @@ const AudioPlay = ({ track, setTrackNumber }) => {
     partialRender: true,
   });
 
+  const setSameTime = () => {
+    const currentTime = playBarRef.current.audio.current.currentTime;
+    wavesurfer.current.setCurrentTime(currentTime);
+  };
+
   const onPlay = () => {
     if (wavesurfer.current) {
       wavesurfer.current.play();
@@ -53,17 +58,17 @@ const AudioPlay = ({ track, setTrackNumber }) => {
     }
   };
 
-  const onSeeked = e => {
+  const onSeeked = () => {
     const currentTime = playBarRef.current.audio.current.currentTime;
     wavesurfer.current.setCurrentTime(currentTime);
   };
 
-  const handleClickNext = () => {
-    setTrackNumber(prev => Number(prev) + 1);
-  };
-
   const hadleClickPre = () => {
     setTrackNumber(prev => Number(prev) - 1);
+  };
+
+  const handleClickNext = () => {
+    setTrackNumber(prev => Number(prev) + 1);
   };
 
   return (
@@ -72,7 +77,7 @@ const AudioPlay = ({ track, setTrackNumber }) => {
         <div id='waveform' ref={waveformRef}></div>
       </WaveFormWrapper>
       <PlayBaraWrapper>
-        <AudioPlayer ref={playBarRef} header={track.title} src={track.src} autoPlay={false} showSkipControls onPlay={onPlay} onPause={onPause} onSeeked={onSeeked} onClickPrevious={hadleClickPre} onClickNext={handleClickNext} />
+        <AudioPlayer ref={playBarRef} header={track.title} src={track.src} autoPlay={false} showSkipControls onListen={setSameTime} onPlay={onPlay} onPause={onPause} onSeeked={onSeeked} onClickPrevious={hadleClickPre} onClickNext={handleClickNext} />
       </PlayBaraWrapper>
       <Download track={track} />
     </AudioPlayWrapper>
