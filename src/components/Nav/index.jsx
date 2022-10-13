@@ -24,9 +24,11 @@ const NavWrapper = styled.div`
 `;
 
 const NavItem = styled(Link)`
+  display: inline-block;
   padding: 20px 0;
   color: white;
   font-size: 30px;
+
   :hover {
     text-shadow: 0 2px #000;
     transform: scale(1.2);

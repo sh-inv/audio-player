@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { RiFileMusicLine } from 'react-icons/ri';
+import { useState } from 'react';
 
 const AudioList = ({ trackList, setTrackNumber }) => {
+  const [active, setActive] = useState(false);
+
   return (
     <StyledContainer>
       <h1>- AUDIO LIST -</h1>
@@ -14,7 +17,11 @@ const AudioList = ({ trackList, setTrackNumber }) => {
               setTrackNumber(e.target.id);
             }}
           >
-            <h2>
+            <h2
+              onClick={() => {
+                setActive(!active);
+              }}
+            >
               <RiFileMusicLine />
             </h2>
             {item.title}
@@ -56,6 +63,7 @@ const StyledContainer = styled.div`
     margin-bottom: 10px;
     font-size: 1em;
     border: none;
+
     :hover {
       background: linear-gradient(to right, #f0ff00, #58cffb);
       cursor: pointer;
