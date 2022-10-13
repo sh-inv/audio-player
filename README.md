@@ -76,7 +76,7 @@ npm run dev
 ### ✅ 오디오 녹음 화면 구현
 오디오 녹음이 가능하며 녹음 중에 녹음 시간을 표시합니다.
 
-<img src="https://user-images.githubusercontent.com/94745558/195707539-659b145e-79b8-47a4-9197-3ee01e3aa91a.gif" width="30%" height="100%"/>
+<img src="https://user-images.githubusercontent.com/94745558/195707539-659b145e-79b8-47a4-9197-3ee01e3aa91a.gif" width="50%" height="100%"/>
 
 <br>
 <br>
@@ -84,7 +84,7 @@ npm run dev
 ### ✅ 오디오 녹음 파일 최대시간 지정
 input 값을 받아 최대 녹음 가능 시간을 control합니다.
 
-<img src="https://user-images.githubusercontent.com/94745558/195709912-87ad8934-3605-4435-9367-ed5b82da4efe.gif" width="30%" height="100%"/>
+<img src="https://user-images.githubusercontent.com/94745558/195709912-87ad8934-3605-4435-9367-ed5b82da4efe.gif" width="50%" height="100%"/>
 
 <br>
 <br>
@@ -92,7 +92,7 @@ input 값을 받아 최대 녹음 가능 시간을 control합니다.
 ### ✅ 오디오 녹음 파일 재생 구현
 저장된 녹음 파일의 재생 시간을 control합니다
 
-<img src="https://user-images.githubusercontent.com/94745558/195708154-624c2f46-e8da-4709-bf31-3486ec8c02ae.gif" width="30%" height="100%"/>
+<img src="https://user-images.githubusercontent.com/94745558/195708154-624c2f46-e8da-4709-bf31-3486ec8c02ae.gif" width="50%" height="100%"/>
 
 <br>
 <br>
@@ -100,7 +100,7 @@ input 값을 받아 최대 녹음 가능 시간을 control합니다.
 ### ✅ 오디오 녹음 파일 다운로드 구현
 저장된 녹음 파일을 다운로드 합니다.
 
-<img src="https://user-images.githubusercontent.com/94745558/195709196-bd7aaa4d-bf44-4fa4-acef-66d217f7c35e.gif" width="30%" height="100%"/>
+<img src="https://user-images.githubusercontent.com/94745558/195709196-bd7aaa4d-bf44-4fa4-acef-66d217f7c35e.gif" width="50%" height="100%"/>
 
 <br>
 <br>
@@ -108,7 +108,7 @@ input 값을 받아 최대 녹음 가능 시간을 control합니다.
 ### ✅ 오디오 재생 화면 구현
 오디오 재생 기능이 가능하며 오디오가 재생된 시간과 오디오 파형을 표시합니다.
 
-<img src="https://user-images.githubusercontent.com/94745558/195710062-83a95770-f15f-4bb5-ab61-8ab81fdb4f7b.gif" width="30%" height="100%"/>
+<img src="https://user-images.githubusercontent.com/94745558/195710062-83a95770-f15f-4bb5-ab61-8ab81fdb4f7b.gif" width="50%" height="100%"/>
 
 <br>
 <br>
@@ -116,7 +116,7 @@ input 값을 받아 최대 녹음 가능 시간을 control합니다.
 ### ✅ 오디오 파형 구현
 현재 선택된 오디오 파일의 파형을 표시합니다.
 
-<img src="https://user-images.githubusercontent.com/94745558/195710537-7987e298-8c31-41cb-86a4-8a0a8b6cbf5c.gif" width="30%" height="100%"/>
+<img src="https://user-images.githubusercontent.com/94745558/195710537-7987e298-8c31-41cb-86a4-8a0a8b6cbf5c.gif" width="50%" height="100%"/>
 
 <br>
 <br>
@@ -124,7 +124,7 @@ input 값을 받아 최대 녹음 가능 시간을 control합니다.
 ### ✅ 오디오 파일 다운로드
 현재 선택된 오디오 파일을 다운로드 합니다.
 
-<img src="https://user-images.githubusercontent.com/94745558/195710904-ea9dc1b1-a2cf-4064-b19f-6675044a6391.gif" width="30%" height="100%"/>
+<img src="https://user-images.githubusercontent.com/94745558/195710904-ea9dc1b1-a2cf-4064-b19f-6675044a6391.gif" width="50%" height="100%"/>
 
 <br>
 <br>
