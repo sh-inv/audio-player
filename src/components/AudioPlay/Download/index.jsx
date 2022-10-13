@@ -20,8 +20,8 @@ const Download = ({ track }) => {
         <p>오디오 파일 확장자를 선택하고 다운로드 받으세요.</p>
         <select name='' id='' onChange={e => setAudioType(e.target.value)} value={audioType}>
           <option value='mp3'>mp3 (default)</option>
-          {/* <option value='wav'>wav</option> */}
-          {/* <option value='webm'>webm</option> */}
+          <option value='wav'>wav</option>
+          <option value='webm'>webm</option>
         </select>
         <p className='down-button'>
           {/* <DownloadButton href={trackUrl}>
