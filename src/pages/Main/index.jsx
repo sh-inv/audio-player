@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import AudioList from '../../components/AudioList';
 import AudioPlay from '../../components/AudioPlay';
 import AudioRecord from '../../components/AudioRecord/index.jsx';
-import axios from 'axios';
 
 const Main = () => {
   const location = useLocation();
@@ -17,7 +16,7 @@ const Main = () => {
 
   useEffect(() => {
     const navTitle = location.pathname;
-    let url = '../../../public/Data/Audio/';
+    let url = '/Data/Audio/';
     if (navTitle === '/') {
       fetchData(url + 'playList.json');
       setIsRecord(false);
@@ -78,7 +77,7 @@ const PlayScreenWrapper = styled.div`
 
   .audio-list-content {
     width: 35%;
-    background-color: #d6d641;
+    background-color: white;
   }
 
   .audio-detail-content {
