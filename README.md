@@ -1,19 +1,12 @@
+# **프로젝트 소개 - 오디오 재생 프로그램 만들기**
+## 배포 주소
+### 📒 https://whimsical-snickerdoodle-2f1ebb.netlify.app/
+
 <br>
-
-## **프로젝트 소개 - 오디오 재생 프로그램 만들기**
-
-```
-
-안녕하세요. 저희는 프리온보딩 2주차 프론트 1팀입니다.
-
-이번 프로젝트는 주식회사 하이에서 제공한 과제인 오디오 관리 프로그램 개발을 진행했습니다.
-
-```
-
 <br>
 
 ## 프로젝트 설치 및 실행 방법
-### 설치 방법
+
 1. Node.js를 설치해주세요.
 ```
 https://nodejs.org/
@@ -29,15 +22,13 @@ git clone https://github.com/sh-inv/audio_player
 npm install
 ```
 
-### 실행방법
-1. 명령어를 통해 server를 실행해주세요. (build vite 사용)
+4. 명령어를 통해 server를 실행해주세요. (build vite 사용)
 ```
 npm run dev
 ```
 
-2. 브라우저에서 하기의 배포주소로 접속해주세요.
-
-📒 배포 주소(https://whimsical-snickerdoodle-2f1ebb.netlify.app/)
+<br>
+<br>
 
 ## 기능 소개
 
@@ -58,10 +49,10 @@ npm run dev
 - 하단에 음성녹음 다운로드 버튼을 클릭하면 다운로드 됩니다.
 
 <br>
+<br>
 
 ## \*\*역할 분담 및 코드 설명
-
-​
+<br>
 
 ### [이고운] - 오디오 플레이 리스트 및 사운드 바 구현
 
@@ -83,6 +74,8 @@ npm run dev
 - 이때 넘겨준 오디오 리스트를 map을 사용하여 리스트 형식으로 가져옴.
 - 생성된 오디오 리스트에서 곡을 클릭하면 tracknumber에 id값을 저장해줌. 여기서 저장된 id값이랑 tracklist의 id가 같으면 그 정보가 track이라는 상태값에 담기는데 props로 넘긴 이 상태값을 사운드 바에서 src를 주소를 사용해 음악을 재생함.
 
+<br>
+
 ### [유상호] - 음성 녹음 및 다운로드
 1. 음성 녹음
 - RECORD 페이지의 마이크를 클릭하면 음성 녹음 시작
@@ -95,14 +88,14 @@ npm run dev
 - '녹음 다운로드 & List 추가' 버튼 클릭시 local 저장소에 저장 및 상단 'Audio List'에 음원 추가(음원 클릭시 재생 가능)
 
 <br>
-
+<br>
 
 ## **적용 기술**
 
 > React.js, styled-component, axios
 
 <br>
-
+<br>
 
 ## **팀 노션**
 
