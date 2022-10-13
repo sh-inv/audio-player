@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
+import Timer from './Timer';
 
 const AudioRecord = () => {
   const [stream, setStream] = useState();
   const [media, setMedia] = useState();
-  const [isRecord, setOnRec] = useState(true);
+  const [isRecord, setIsRecord] = useState(true);
   const [source, setSource] = useState();
   const [analyser, setAnalyser] = useState();
   const [audioData, setAudioData] = useState();
   const [maxRecordTime, setMaxRecordTime] = useState(60);
   const [newRecord, setNewRecord] = useState('');
+
+  const [currenthours, setCurrentHours] = useState(0);
+  const [currentMinutes, setCurrentMinutes] = useState(0);
+  const [currentSeconds, setCurrentSeconds] = useState(0);
+
+  const [cron, setCron] = useState();
+
   const selectObject = [
     {
       name: '1 min',
@@ -33,11 +42,26 @@ const AudioRecord = () => {
     },
   ];
 
+  // 타이머
+  let time = 0;
+  const updateTimer = () => {
+    const checkMinutes = Math.floor(time / 60);
+    const hours = Math.floor(time / 3600);
+    const minutes = checkMinutes % 60;
+    const seconds = time % 60;
+    setCurrentHours(hours);
+    setCurrentMinutes(minutes);
+    setCurrentSeconds(seconds);
+    time++;
+  };
+
   const recordTime = e => {
     setMaxRecordTime(e.target.value * 60);
   };
 
   const onRecAudio = () => {
+    updateTimer();
+    setCron(setInterval(updateTimer, 1000));
     // 음원정보를 담은 노드를 생성하거나 음원을 실행또는 디코딩 시키는 일을 한다
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     // 자바스크립트를 통해 음원의 진행상태에 직접접근에 사용된다.
@@ -72,21 +96,23 @@ const AudioRecord = () => {
 
           mediaRecorder.ondataavailable = function (e) {
             setAudioData(e.data);
-            setOnRec(true);
+            setIsRecord(true);
           };
         } else {
-          setOnRec(false);
+          setIsRecord(false);
         }
       };
     });
+    setIsRecord(false);
   };
 
   // 사용자가 음성 녹음을 중지 했을 때
   const offRecAudio = () => {
+    clearInterval(cron);
     // dataavailable 이벤트로 Blob 데이터에 대한 응답을 받을 수 있음
     media.ondataavailable = function (e) {
       setAudioData(e.data);
-      setOnRec(true);
+      setIsRecord(true);
     };
 
     // 모든 트랙에서 stop()을 호출해 오디오 스트림을 정지
@@ -101,11 +127,6 @@ const AudioRecord = () => {
     analyser.disconnect();
     source.disconnect();
 
-    // if (audioData) {
-    //   const audioUrl = URL.createObjectURL(audioData); // 출력된 링크에서 녹음된 오디오 확인 가능
-    //   setNewRecord(audioUrl);
-    // }
-    
     // File 생성자를 사용해 파일로 변환
     const sound = new File([audioData], 'voiceRecord', {
       lastModified: new Date().getTime(),
@@ -113,10 +134,11 @@ const AudioRecord = () => {
     });
     setNewRecord(sound);
     console.log(sound); // File 정보 출력
+    setIsRecord(true);
   };
-  
+
   const recordURL = () => {
-    if(audioData){
+    if (audioData) {
       setNewRecord(URL.createObjectURL(audioData));
     } else {
       alert('녹음파일이 없습니다!');
@@ -131,7 +153,8 @@ const AudioRecord = () => {
         src={!isRecord ? 'https://user-images.githubusercontent.com/104422865/195544014-8286f4e9-4826-4b2c-9983-7971e239d642.png' : 'https://cdn-icons-png.flaticon.com/512/3138/3138411.png'}
         onClick={isRecord ? onRecAudio : offRecAudio}
       />
-      <div>
+      <Timer currenthours={currenthours} currentSeconds={currentSeconds} currentMinutes={currentMinutes} />
+      <div className='max-record-time'>
         녹음 가능 시간:
         <select onChange={recordTime}>
           {selectObject.map(object => (
@@ -141,9 +164,11 @@ const AudioRecord = () => {
           ))}
         </select>
       </div>
-      {audioData && <a className='click-to-download' href={newRecord} download onClick={recordURL}>
-        음성녹음 다운로드
-      </a>}
+      {audioData && (
+        <a className='click-to-download' href={newRecord} download onClick={recordURL}>
+          음성녹음 다운로드
+        </a>
+      )}
     </Record>
   );
 };
@@ -165,10 +190,14 @@ const Record = styled.div`
   }
 
   .record-btn {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     margin: 20px 0;
     cursor: pointer;
+  }
+
+  .max-record-time {
+    margin: 15px 0;
   }
 
   .click-to-download {

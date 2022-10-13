@@ -2,14 +2,13 @@ import { initializeApp } from 'firebase/app';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBvpsTJ1_dkShj72oLaMAMgJD_21cCDZkE',
-  authDomain: 'pre-onboarding-third.firebaseapp.com',
-  projectId: 'pre-onboarding-third',
-  storageBucket: 'pre-onboarding-third.appspot.com',
-  messagingSenderId: '1041333914843',
-  appId: '1:1041333914843:web:2db13cc910795d615b10fe',
-  measurementId: 'G-5MSH25XRLJ',
-  storageBucket: 'gs://pre-onboarding-third.appspot.com',
+  apiKey: "AIzaSyBULFU8lFalXZc4EJvIq23gWrM2_YL5pw0",
+  authDomain: "record-a5032.firebaseapp.com",
+  projectId: "record-a5032",
+  storageBucket: "record-a5032.appspot.com",
+  messagingSenderId: "533115981697",
+  appId: "1:533115981697:web:0f9e34bcd6464a43f4e280",
+  measurementId: "G-8THV7D3T3K"
 };
 
 const app = initializeApp(firebaseConfig);
