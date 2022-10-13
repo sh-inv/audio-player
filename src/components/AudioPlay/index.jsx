@@ -9,14 +9,17 @@ import { useEffect, useRef } from 'react';
 const AudioPlay = ({ track, setTrackNumber }) => {
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
+  const playBarRef = useRef(null);
 
   useEffect(() => {
     if (track) {
       const options = formWaveSurferOptions(waveformRef.current);
       wavesurfer.current = WaveSurfer.create(options);
       wavesurfer.current.load(track.src);
-      wavesurfer.current.on('ready', function () {
+      playBarRef.current.audio.current.pause();
+      wavesurfer.current.on('ready', () => {
         if (wavesurfer.current) {
+          playBarRef.current.audio.current.play();
           wavesurfer.current.play();
           wavesurfer.current.setVolume(0.5);
         }
@@ -24,10 +27,6 @@ const AudioPlay = ({ track, setTrackNumber }) => {
       return () => wavesurfer.current.destroy();
     }
   }, [track.src]);
-
-  const handlePlayPause = () => {
-    wavesurfer.current.playPause();
-  };
 
   const formWaveSurferOptions = ref => ({
     container: ref,
@@ -41,6 +40,19 @@ const AudioPlay = ({ track, setTrackNumber }) => {
     normalize: true,
     partialRender: true,
   });
+
+  const onPlay = () => {
+    if (wavesurfer.current) {
+      wavesurfer.current.play();
+      wavesurfer.current.setVolume(0.5);
+    }
+  };
+
+  const onPause = () => {
+    if (wavesurfer.current) {
+      wavesurfer.current.playPause();
+    }
+  };
 
   const handleClickNext = () => {
     setTrackNumber(prev => Number(prev) + 1);
@@ -56,7 +68,7 @@ const AudioPlay = ({ track, setTrackNumber }) => {
         <div id='waveform' ref={waveformRef}></div>
       </WaveFormWrapper>
       <PlayBaraWrapper>
-        <AudioPlayer header={track.title} autoPlay={false} src={track.src} showSkipControls onClickPrevious={hadleClickPre} onClickNext={handleClickNext} />
+        <AudioPlayer ref={playBarRef} header={track.title} src={track.src} autoPlay={false} showSkipControls onPlay={onPlay} onPause={onPause} onClickPrevious={hadleClickPre} onClickNext={handleClickNext} />
       </PlayBaraWrapper>
       <Download track={track} />
     </AudioPlayWrapper>
