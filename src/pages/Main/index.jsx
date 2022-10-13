@@ -65,7 +65,7 @@ const Main = () => {
       </div>
       <div className='audio-detail-content'>
         <AudioPlay track={track} setTrackNumber={setTrackNumber} />
-        {isRecord && <AudioRecord />}
+        {isRecord && <AudioRecord trackList={trackList} setTrackList={setTrackList} />}
       </div>
     </PlayScreenWrapper>
   );
