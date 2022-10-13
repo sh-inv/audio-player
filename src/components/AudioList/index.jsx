@@ -36,7 +36,9 @@ export default AudioList;
 
 const StyledContainer = styled.div`
   width: 63vw;
+  height: 308px;
   margin: 12px;
+  padding-top: 15px;
   text-align: center;
   background-color: white;
 
@@ -47,7 +49,7 @@ const StyledContainer = styled.div`
     background-clip: text;
     color: transparent;
     margin-bottom: 10px;
-    padding-top: 10px;
+    padding-top: 20px;
     font-size: 1.8em;
     font-weight: bold;
   }

@@ -24,13 +24,12 @@ const Download = ({ track }) => {
           {/* <option value='webm'>webm</option> */}
         </select>
         <p className='down-button'>
-          <DownloadButton href={trackUrl}>
+          {/* <DownloadButton href={trackUrl}>
             <FiDownload />
-          </DownloadButton>
+          </DownloadButton> */}
+          <DownloadButton href={trackUrl}>오디오파일 다운로드</DownloadButton>
         </p>
       </AudioTypeBox>
-
-      {/* <FiDownload href={trackUrl} /> */}
     </DownloadWrapper>
   );
 };
@@ -45,6 +44,7 @@ const DownloadWrapper = styled.div`
 `;
 
 const AudioTypeBox = styled.div`
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -64,7 +64,11 @@ const AudioTypeBox = styled.div`
   }
 
   .down-button {
-    display: inline;
+    width: 180px;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 10px;
   }
 `;
 
@@ -74,6 +78,7 @@ const DownloadButton = styled.a`
   height: 20px;
   padding-left: 3px;
   bottom: 0;
+  color: black;
 
   svg {
     width: 23px;

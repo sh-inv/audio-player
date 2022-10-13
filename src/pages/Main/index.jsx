@@ -5,6 +5,7 @@ import axios from 'axios';
 import AudioList from '../../components/AudioList';
 import AudioPlay from '../../components/AudioPlay';
 import AudioRecord from '../../components/AudioRecord/index.jsx';
+axios.defaults.withCredentials = true;
 
 const Main = () => {
   const location = useLocation();
@@ -33,7 +34,13 @@ const Main = () => {
       try {
         const {
           data: { lists },
-        } = await axios.get(url);
+        } = await axios({
+          url,
+          method: 'GET',
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+        });
         setTrackList(lists);
       } catch (error) {
         console.log(error);
@@ -66,6 +73,7 @@ const Main = () => {
 
 const PlayScreenWrapper = styled.div`
   display: flex;
+  height: 100%;
 
   .audio-list-content,
   .audio-detail-content {
