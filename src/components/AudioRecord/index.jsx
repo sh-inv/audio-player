@@ -1,5 +1,5 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import React, { useState, useRef } from 'react';
 
 const AudioRecord = () => {
   const [stream, setStream] = useState();
@@ -7,14 +7,37 @@ const AudioRecord = () => {
   const [isRecord, setOnRec] = useState(true);
   const [source, setSource] = useState();
   const [analyser, setAnalyser] = useState();
-  const [audioUrl, setAudioUrl] = useState();
-  const [disabled, setDisabled] = useState(true);
-  const [maxRecordTime, setMaxRecordTime] = useState(180);
-  const recordTimeInput = useRef();
+  const [audioData, setAudioData] = useState();
+  const [maxRecordTime, setMaxRecordTime] = useState(60);
+  const [newRecord, setNewRecord] = useState('');
+  const selectObject = [
+    {
+      name: '1 min',
+      value: 1,
+    },
+    {
+      name: '3 min',
+      value: 3,
+    },
+    {
+      name: '5 min',
+      value: 5,
+    },
+    {
+      name: '10 min',
+      value: 10,
+    },
+    {
+      name: '30 min',
+      value: 30,
+    },
+  ];
+
+  const recordTime = e => {
+    setMaxRecordTime(e.target.value * 60);
+  };
 
   const onRecAudio = () => {
-    setDisabled(true);
-
     // 음원정보를 담은 노드를 생성하거나 음원을 실행또는 디코딩 시키는 일을 한다
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     // 자바스크립트를 통해 음원의 진행상태에 직접접근에 사용된다.
@@ -48,7 +71,7 @@ const AudioRecord = () => {
           audioCtx.createMediaStreamSource(stream).disconnect();
 
           mediaRecorder.ondataavailable = function (e) {
-            setAudioUrl(e.data);
+            setAudioData(e.data);
             setOnRec(true);
           };
         } else {
@@ -62,7 +85,7 @@ const AudioRecord = () => {
   const offRecAudio = () => {
     // dataavailable 이벤트로 Blob 데이터에 대한 응답을 받을 수 있음
     media.ondataavailable = function (e) {
-      setAudioUrl(e.data);
+      setAudioData(e.data);
       setOnRec(true);
     };
 
@@ -78,45 +101,62 @@ const AudioRecord = () => {
     analyser.disconnect();
     source.disconnect();
 
-    if (audioUrl) {
-      URL.createObjectURL(audioUrl); // 출력된 링크에서 녹음된 오디오 확인 가능
-    }
-
+    // if (audioData) {
+    //   const audioUrl = URL.createObjectURL(audioData); // 출력된 링크에서 녹음된 오디오 확인 가능
+    //   setNewRecord(audioUrl);
+    // }
+    
     // File 생성자를 사용해 파일로 변환
-    const sound = new File([audioUrl], 'soundBlob', {
+    const sound = new File([audioData], 'voiceRecord', {
       lastModified: new Date().getTime(),
       type: 'audio',
     });
-
-    setDisabled(false);
     console.log(sound); // File 정보 출력
   };
-
-  const play = () => {
-    const audio = new Audio(URL.createObjectURL(audioUrl));
-    audio.loop = false;
-    audio.volume = 1;
-    audio.play();
-  };
-
-  const recordTime = () => {
-    setMaxRecordTime(recordTimeInput.current.value * 60);
-  };
-  console.log(maxRecordTime);
-
-  return (
+  
+  const recordURL = () => {
+      const audio = new Audio(URL.createObjectURL(audioData));
+      setNewRecord(URL.createObjectURL(audioData));
+      console.log(audio);
+    };
+    console.log('adsf',newRecord);
+    
+    return (
     <Record>
-      {!isRecord && <span>녹음중...</span>}
-      <button onClick={isRecord ? onRecAudio : offRecAudio}>녹음</button>
-      <span>
-        최대 녹음가능 시간 <input type='number' defaultValue={maxRecordTime / 60} min='1' ref={recordTimeInput} onClick={recordTime} /> 분
-      </span>
+      <img
+        className='record-btn'
+        src={!isRecord ? 'https://cdn-icons-png.flaticon.com/512/3138/3138411.png' : 'https://user-images.githubusercontent.com/104422865/195350700-b8386025-86a2-4d99-aed8-07b3242ff760.png'}
+        onClick={isRecord ? onRecAudio : offRecAudio}
+      />
+      <select onChange={recordTime}>
+        {selectObject.map(object => (
+          <option key={object.name} value={object.value}>
+            {object.name}
+          </option>
+        ))}
+      </select>
+      <button onClick={recordURL}>녹음저장</button>
+      <a href={newRecord} download>Click to download</a>
     </Record>
   );
 };
 
 const Record = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+
+  .on-record {
+    font-size: 14px;
+    color: #939393;
+  }
+
+  .record-btn {
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+  }
 `;
 
 export default AudioRecord;
