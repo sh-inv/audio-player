@@ -27,7 +27,7 @@ const StyledContainer = styled.div`
   .rhap_container {
     display: flex;
     width: 100%;
-    height: 15vh;
+    height: 18vh;
     background: linear-gradient(to right, #f0ff00, #58cffb);
     border: none;
     box-shadow: none;
@@ -38,7 +38,7 @@ const StyledContainer = styled.div`
 
     .rhap_header {
       color: white;
-      font-size: 28px;
+      font-size: 20px;
       text-align: center;
       font-weight: bold;
     }

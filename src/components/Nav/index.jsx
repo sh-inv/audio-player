@@ -5,8 +5,8 @@ import { mainColor } from '../../Theme';
 const Nav = () => {
   return (
     <NavWrapper>
-      <NavItem to='/'>음성 목록</NavItem>
-      <NavItem to='/record'>녹음 목록</NavItem>
+      <NavItem to='/'>AUDIO</NavItem>
+      <NavItem to='/record'>RECORD</NavItem>
     </NavWrapper>
   );
 };
@@ -18,11 +18,21 @@ const NavWrapper = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  background-color: ${mainColor};
+  /* background-color: ${mainColor}; */
+  background: linear-gradient(to right, #f0ff00, #58cffb);
+  font-weight: 3em;
 `;
 
 const NavItem = styled(Link)`
   padding: 20px 0;
   color: white;
   font-size: 30px;
+  :hover {
+    text-shadow: 0 2px #000;
+    transform: scale(1.2);
+  }
+  :focus {
+    text-shadow: 0 2px #000;
+    transform: scale(1.2);
+  }
 `;

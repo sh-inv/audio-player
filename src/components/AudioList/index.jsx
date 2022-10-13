@@ -28,26 +28,32 @@ const AudioList = ({ trackList, setTrackNumber }) => {
 export default AudioList;
 
 const StyledContainer = styled.div`
-  margin: 10px;
+  width: 50vw;
+  margin: 5px;
   text-align: center;
+  background-color: white;
+
   h1 {
+    width: 100%;
     background: -webkit-linear-gradient(left, #f0ff00, #58cffb);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     margin-bottom: 10px;
-    font-size: 1.9em;
+    padding-top: 10px;
+    font-size: 1.8em;
     font-weight: bold;
   }
   ul {
+    display: inline-block;
     width: 200px;
+    align-items: center;
   }
   li {
     display: flex;
     width: 100%;
     padding: 7px;
     margin-bottom: 10px;
-    border: 1px solid gray;
     font-size: 1em;
     border: none;
     :hover {
