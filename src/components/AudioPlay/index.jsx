@@ -53,6 +53,11 @@ const AudioPlay = ({ track, setTrackNumber }) => {
     }
   };
 
+  const onSeeked = e => {
+    const currentTime = playBarRef.current.audio.current.currentTime;
+    wavesurfer.current.setCurrentTime(currentTime);
+  };
+
   const handleClickNext = () => {
     setTrackNumber(prev => Number(prev) + 1);
   };
@@ -67,7 +72,7 @@ const AudioPlay = ({ track, setTrackNumber }) => {
         <div id='waveform' ref={waveformRef}></div>
       </WaveFormWrapper>
       <PlayBaraWrapper>
-        <AudioPlayer ref={playBarRef} header={track.title} src={track.src} autoPlay={false} showSkipControls onPlay={onPlay} onPause={onPause} onClickPrevious={hadleClickPre} onClickNext={handleClickNext} />
+        <AudioPlayer ref={playBarRef} header={track.title} src={track.src} autoPlay={false} showSkipControls onPlay={onPlay} onPause={onPause} onSeeked={onSeeked} onClickPrevious={hadleClickPre} onClickNext={handleClickNext} />
       </PlayBaraWrapper>
       <Download track={track} />
     </AudioPlayWrapper>
