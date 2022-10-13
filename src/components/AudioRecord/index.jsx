@@ -105,7 +105,7 @@ const AudioRecord = () => {
     //   const audioUrl = URL.createObjectURL(audioData); // 출력된 링크에서 녹음된 오디오 확인 가능
     //   setNewRecord(audioUrl);
     // }
-
+    
     // File 생성자를 사용해 파일로 변환
     const sound = new File([audioData], 'voiceRecord', {
       lastModified: new Date().getTime(),
@@ -114,18 +114,18 @@ const AudioRecord = () => {
     setNewRecord(sound);
     console.log(sound); // File 정보 출력
   };
-
+  
   const recordURL = () => {
-    // if(audioData){
-    //   setNewRecord(URL.createObjectURL(audioData));
-    // } else {
-    //   alert('녹음파일이 없습니다!');
-    // }
+    if(audioData){
+      setNewRecord(URL.createObjectURL(audioData));
+    } else {
+      alert('녹음파일이 없습니다!');
+    }
   };
-  console.log('adsf', newRecord);
 
   return (
     <Record>
+      <p>음성녹음은 마이크를 클릭해주세요.</p>
       <img
         className='record-btn'
         src={!isRecord ? 'https://user-images.githubusercontent.com/104422865/195544014-8286f4e9-4826-4b2c-9983-7971e239d642.png' : 'https://cdn-icons-png.flaticon.com/512/3138/3138411.png'}
@@ -141,9 +141,9 @@ const AudioRecord = () => {
           ))}
         </select>
       </div>
-      <a className='click-to-download' href={newRecord} download onClick={recordURL}>
+      {audioData && <a className='click-to-download' href={newRecord} download onClick={recordURL}>
         음성녹음 다운로드
-      </a>
+      </a>}
     </Record>
   );
 };
@@ -153,6 +153,11 @@ const Record = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+
+  p {
+    font-size: 10px;
+    margin-top: 15px;
+  }
 
   .on-record {
     font-size: 14px;
@@ -167,12 +172,12 @@ const Record = styled.div`
   }
 
   .click-to-download {
+    color: #000000;
     margin: 20px 0;
+    text-decoration: none;
     border: 1px solid #000000;
     border-radius: 10px;
     padding: 10px;
-    color: #000000;
-    text-decoration: none;
   }
 `;
 
