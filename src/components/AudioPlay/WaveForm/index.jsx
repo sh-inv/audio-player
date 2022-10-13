@@ -47,4 +47,7 @@ const WaveForm = ({ track }) => {
 
 export default WaveForm;
 
-const WaveFormWrapper = styled.div``;
+const WaveFormWrapper = styled.div`
+  border: 1px solid black;
+  height: 56%;
+`;

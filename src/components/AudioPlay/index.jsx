@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import WaveSurfer from 'wavesurfer.js';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import WaveForm from './WaveForm';
 import Download from './Download';
 import { useEffect, useRef } from 'react';
 
@@ -21,7 +20,7 @@ const AudioPlay = ({ track, setTrackNumber }) => {
         if (wavesurfer.current) {
           playBarRef.current.audio.current.play();
           wavesurfer.current.play();
-          wavesurfer.current.setVolume(0.5);
+          wavesurfer.current.setVolume(0);
         }
       });
       return () => wavesurfer.current.destroy();
@@ -41,6 +40,11 @@ const AudioPlay = ({ track, setTrackNumber }) => {
     partialRender: true,
   });
 
+  const setSameTime = () => {
+    const currentTime = playBarRef.current.audio.current.currentTime;
+    wavesurfer.current.setCurrentTime(currentTime);
+  };
+
   const onPlay = () => {
     if (wavesurfer.current) {
       wavesurfer.current.play();
@@ -54,12 +58,17 @@ const AudioPlay = ({ track, setTrackNumber }) => {
     }
   };
 
-  const handleClickNext = () => {
-    setTrackNumber(prev => Number(prev) + 1);
+  const onSeeked = () => {
+    const currentTime = playBarRef.current.audio.current.currentTime;
+    wavesurfer.current.setCurrentTime(currentTime);
   };
 
   const hadleClickPre = () => {
     setTrackNumber(prev => Number(prev) - 1);
+  };
+
+  const handleClickNext = () => {
+    setTrackNumber(prev => Number(prev) + 1);
   };
 
   return (
@@ -68,7 +77,7 @@ const AudioPlay = ({ track, setTrackNumber }) => {
         <div id='waveform' ref={waveformRef}></div>
       </WaveFormWrapper>
       <PlayBaraWrapper>
-        <AudioPlayer ref={playBarRef} header={track.title} src={track.src} autoPlay={false} showSkipControls onPlay={onPlay} onPause={onPause} onClickPrevious={hadleClickPre} onClickNext={handleClickNext} />
+        <AudioPlayer ref={playBarRef} header={track.title} src={track.src} autoPlay={false} showSkipControls onListen={setSameTime} onPlay={onPlay} onPause={onPause} onSeeked={onSeeked} onClickPrevious={hadleClickPre} onClickNext={handleClickNext} />
       </PlayBaraWrapper>
       <Download track={track} />
     </AudioPlayWrapper>
@@ -88,7 +97,7 @@ const PlayBaraWrapper = styled.div`
   .rhap_container {
     display: flex;
     width: 100%;
-    height: 18vh;
+    height: 22vh;
     background: linear-gradient(to right, #f0ff00, #58cffb);
     border: none;
     box-shadow: none;
