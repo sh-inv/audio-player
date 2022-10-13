@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import WaveSurfer from 'wavesurfer.js';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import WaveForm from './WaveForm';
 import Download from './Download';
 import { useEffect, useRef } from 'react';
 
