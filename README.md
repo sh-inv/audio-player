@@ -8,6 +8,8 @@
 <br>
 <br>
 
+![](https://velog.velcdn.com/images/qierapu1im/post/1e548a06-f04d-4504-a8e3-f6fa93e7af56/image.gif)
+
 ## 프로젝트 설치 및 실행 방법
 
 1. Node.js를 설치해주세요.
