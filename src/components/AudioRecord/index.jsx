@@ -3,7 +3,9 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 import Timer from './Timer';
 
-const AudioRecord = () => {
+const AudioRecord = props => {
+  const { trackList, setTrackList } = props;
+
   const [stream, setStream] = useState();
   const [media, setMedia] = useState();
   const [isRecord, setIsRecord] = useState(true);
@@ -68,13 +70,13 @@ const AudioRecord = () => {
     const analyser = audioCtx.createScriptProcessor(0, 1, 1);
     setAnalyser(analyser);
 
-    function makeSound(stream) {
+    const makeSound = stream => {
       // 내 컴퓨터의 마이크나 다른 소스를 통해 발생한 오디오 스트림의 정보를 보여준다.
       const source = audioCtx.createMediaStreamSource(stream);
       setSource(source);
       source.connect(analyser);
       analyser.connect(audioCtx.destination);
-    }
+    };
     // 마이크 사용 권한 획득
     navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
       const mediaRecorder = new MediaRecorder(stream);
@@ -83,8 +85,8 @@ const AudioRecord = () => {
       setMedia(mediaRecorder);
       makeSound(stream);
 
-      analyser.onaudioprocess = function (e) {
-        // 3분(180초) 지나면 자동으로 음성 저장 및 녹음 중지
+      analyser.onaudioprocess = e => {
+        // 선택한 시간 지나면 녹음 중지
         if (e.playbackTime > maxRecordTime) {
           stream.getAudioTracks().forEach(function (track) {
             track.stop();
@@ -103,14 +105,13 @@ const AudioRecord = () => {
         }
       };
     });
-    setIsRecord(false);
   };
 
   // 사용자가 음성 녹음을 중지 했을 때
   const offRecAudio = () => {
     clearInterval(cron);
     // dataavailable 이벤트로 Blob 데이터에 대한 응답을 받을 수 있음
-    media.ondataavailable = function (e) {
+    media.ondataavailable = e => {
       setAudioData(e.data);
       setIsRecord(true);
     };
@@ -126,20 +127,20 @@ const AudioRecord = () => {
     // 메서드가 호출 된 노드 연결 해제
     analyser.disconnect();
     source.disconnect();
-
-    // File 생성자를 사용해 파일로 변환
-    const sound = new File([audioData], 'voiceRecord', {
-      lastModified: new Date().getTime(),
-      type: 'audio',
-    });
-    setNewRecord(sound);
-    console.log(sound); // File 정보 출력
-    setIsRecord(true);
   };
 
-  const recordURL = () => {
+  const saveRocordFile = () => {
     if (audioData) {
-      setNewRecord(URL.createObjectURL(audioData));
+      const recordURL = URL.createObjectURL(audioData);
+      const newTrack = {
+        id: trackList.length + 1,
+        src: recordURL,
+        title: `record${trackList.length}`,
+      };
+      let arr = [...trackList];
+      arr.push(newTrack);
+      setTrackList(arr);
+      setNewRecord(recordURL);
     } else {
       alert('녹음파일이 없습니다!');
     }
@@ -165,8 +166,8 @@ const AudioRecord = () => {
         </select>
       </div>
       {audioData && (
-        <a className='click-to-download' href={newRecord} download onClick={recordURL}>
-          음성녹음 다운로드
+        <a className='click-to-download' href={newRecord} download onClick={saveRocordFile}>
+          녹음 다운로드 & List 추가
         </a>
       )}
     </Record>
@@ -197,12 +198,12 @@ const Record = styled.div`
   }
 
   .max-record-time {
-    margin: 15px 0;
+    margin: 15px;
   }
 
   .click-to-download {
     color: #000000;
-    margin: 20px 0;
+    margin-bottom: 15px;
     text-decoration: none;
     border: 1px solid #000000;
     border-radius: 10px;
