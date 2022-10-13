@@ -21,7 +21,7 @@ const Main = () => {
       fetchData(url + 'playList.json');
       setIsRecord(false);
     } else if (navTitle === '/record') {
-      fetchData(url + 'recordList.json');
+      fetchData(url + 'audioRecord.json');
       setIsRecord(true);
     } else {
       setErr(true);
