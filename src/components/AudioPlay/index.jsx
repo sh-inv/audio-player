@@ -1,9 +1,9 @@
 import styled from 'styled-components';
+import { useEffect, useRef } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import Download from './Download';
-import { useEffect, useRef } from 'react';
 
 const AudioPlay = ({ track, setTrackNumber }) => {
   const waveformRef = useRef(null);
@@ -48,7 +48,6 @@ const AudioPlay = ({ track, setTrackNumber }) => {
   const onPlay = () => {
     if (wavesurfer.current) {
       wavesurfer.current.play();
-      wavesurfer.current.setVolume(0.5);
     }
   };
 
