@@ -57,11 +57,14 @@ npm run dev
 - 하단에 음성녹음 다운로드 버튼을 클릭하면 다운로드 됩니다.
 
 ### 오디오 플레이어
+#### 오디오 플레이어 구현 화면
 ![오디오플레이어1](https://user-images.githubusercontent.com/108816777/195650085-20463dbd-f92f-4f3e-8c04-bcf3cbd800b0.gif)
 
 ### 녹음 플레이어
+#### 녹음 플레이어 구현 화면
 ![녹음플레이어1](https://user-images.githubusercontent.com/108816777/195650493-163027ef-6cf2-4425-bd5a-76d0d254ee95.gif)
 
+#### 녹음 후 저장 파일 실행 화면
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/108816777/195652100-78d11533-1648-40e8-b392-e36dea7cfa14.gif)
 <br>
 
