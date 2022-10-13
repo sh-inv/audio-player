@@ -31,12 +31,11 @@
 - 하단에 음성녹음 다운로드 버튼을 클릭하면 다운로드 됩니다.
 
 ### 오디오 플레이어
-<img src="https://github.com/sh-inv/audio_player/issues/22#issue-1408067936">
+![오디오플레이어1](https://user-images.githubusercontent.com/108816777/195650085-20463dbd-f92f-4f3e-8c04-bcf3cbd800b0.gif)
 
 ### 녹음 플레이어
-<img src="https://github.com/sh-inv/audio_player/issues/23#issue-1408068911">
-<img src="https://github.com/sh-inv/audio_player/issues/24#issue-1408069748">
-
+![녹음플레이어1](https://user-images.githubusercontent.com/108816777/195650493-163027ef-6cf2-4425-bd5a-76d0d254ee95.gif)
+![녹음플레이어2](https://user-images.githubusercontent.com/108816777/195650616-5c1cdf13-0e09-4b98-a41a-c1952f197d9c.gif)
 <br>
 
 ## \*\*역할 분담
