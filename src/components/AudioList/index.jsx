@@ -35,8 +35,8 @@ const AudioList = ({ trackList, setTrackNumber }) => {
 export default AudioList;
 
 const StyledContainer = styled.div`
-  width: 50vw;
-  margin: 5px;
+  width: 63vw;
+  margin: 12px;
   text-align: center;
   background-color: white;
 
@@ -59,7 +59,6 @@ const StyledContainer = styled.div`
   li {
     display: flex;
     width: 100%;
-    padding: 7px;
     margin-bottom: 10px;
     font-size: 1em;
     border: none;

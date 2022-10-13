@@ -73,12 +73,12 @@ const PlayScreenWrapper = styled.div`
     justify-content: center;
     margin: 5px 0px;
     padding: 5px;
+    height: 100%;
   }
 
   .audio-list-content {
     width: 35%;
-    background-color: beige;
-    border: 5px solid beige;
+    background: linear-gradient(to right, #f0ff00, #58cffb);
   }
 
   .audio-detail-content {
