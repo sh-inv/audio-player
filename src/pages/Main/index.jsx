@@ -5,7 +5,7 @@ import axios from 'axios';
 import AudioList from '../../components/AudioList';
 import AudioPlay from '../../components/AudioPlay';
 import AudioRecord from '../../components/AudioRecord/index.jsx';
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 const Main = () => {
   const location = useLocation();
