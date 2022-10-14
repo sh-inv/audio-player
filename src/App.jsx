@@ -10,7 +10,9 @@ const App = () => {
       <Router>
         <Nav />
         <Routes>
-          <Route path='/*' element={<Main />} />
+          <Route path='/*' element={<Main />}>
+            <Route path='record' element={<Main />} />
+          </Route>
         </Routes>
       </Router>
     </>
