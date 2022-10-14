@@ -55,7 +55,7 @@ https://nodejs.org/
 
 2. 레포지토리를 클론 후 폴더로 이동 해주세요.
 ```
-git clone https://github.com/sh-inv/audio-player
+git clone https://github.com/sh-inv/audio-player.git
 cd audio-player
 ```
 
